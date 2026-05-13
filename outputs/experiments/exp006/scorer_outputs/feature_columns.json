@@ -1,0 +1,26 @@
+{
+  "numeric_features": [
+    "early_loss",
+    "surprise_score",
+    "replay_selection_score",
+    "utility_score",
+    "token_count"
+  ],
+  "categorical_features": [
+    "task_name",
+    "auto_replay_tag",
+    "appeared_in_strategies"
+  ],
+  "raw_feature_columns": [
+    "early_loss",
+    "surprise_score",
+    "replay_selection_score",
+    "utility_score",
+    "token_count",
+    "task_name",
+    "auto_replay_tag",
+    "appeared_in_strategies"
+  ],
+  "model_name": "logistic_regression",
+  "label_source": "human_review"
+}

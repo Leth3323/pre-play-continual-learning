@@ -1,0 +1,41 @@
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+
+# Virtual environments / caches
+.venv/
+venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.cache/
+
+# Local data and backups
+backup_before/
+data/
+
+# Experiment artifacts
+**/checkpoints/
+**/logs/
+**/replay_buffers/
+**/replay_scores/
+**/sample_signals/
+**/utility_labels/
+**/human_review/
+**/scorer_checkpoints/
+**/scorer_checkpoints_expanded/
+**/metrics/*predictions*.csv
+*predictions*.csv
+*.joblib
+*.pt
+*.pth
+*.bin
+*.safetensors
+
+# Local secrets
+.env
+.env.*

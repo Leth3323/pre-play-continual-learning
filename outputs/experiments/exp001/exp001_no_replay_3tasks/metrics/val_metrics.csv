@@ -1,0 +1,7 @@
+task_name,accuracy,num_samples,after_task,eval_split,best_accuracy_so_far,forgetting
+sciq,0.4,30,sciq,val,0.4,0.0
+sciq,0.3,30,arc_challenge,val,0.4,0.10000000000000003
+arc_challenge,0.3,30,arc_challenge,val,0.3,0.0
+sciq,0.3333333333333333,30,boolq,val,0.4,0.06666666666666671
+arc_challenge,0.2,30,boolq,val,0.3,0.09999999999999998
+boolq,0.5333333333333333,30,boolq,val,0.5333333333333333,0.0

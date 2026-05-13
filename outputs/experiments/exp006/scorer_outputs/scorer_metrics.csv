@@ -1,0 +1,14 @@
+metric,value
+label_source,human_review
+model_name,logistic_regression
+split_used,train_test
+num_rows,57
+num_train_rows,39
+num_eval_rows,18
+num_positive_labels,22
+num_negative_labels,35
+accuracy,0.8333333333333334
+precision,0.75
+recall,0.8571428571428571
+f1,0.8
+roc_auc,0.8051948051948051
