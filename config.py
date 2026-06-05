@@ -178,6 +178,10 @@ def get_processed_task_dir(config: AppConfig, task_name: str) -> Path:
 
 def extract_experiment_id(run_name: str) -> str:
     """Extract an experiment id like exp004 from a run name."""
+    if "/" in run_name:
+        first_part = Path(run_name).parts[0]
+        if EXPERIMENT_ID_PATTERN.match(first_part):
+            return first_part
     match = EXPERIMENT_ID_PATTERN.match(run_name)
     if match:
         return match.group(1)
@@ -191,6 +195,10 @@ def get_experiment_dir(config: AppConfig, run_name: str) -> Path:
 
 def get_run_dir(config: AppConfig, run_name: str) -> Path:
     """Return the nested run directory for a run name."""
+    if "/" in run_name:
+        run_path = Path(run_name)
+        if run_path.parts and run_path.parts[0] == extract_experiment_id(run_name):
+            return get_experiment_dir(config, run_name) / Path(*run_path.parts[1:])
     return get_experiment_dir(config, run_name) / run_name
 
 

@@ -1,0 +1,51 @@
+sample_id,task_name,prediction,normalized_prediction,target_text,normalized_target_text,is_correct
+sciq_test_000001,sciq,magma,magma,tree rings,tree rings,False
+sciq_test_000002,sciq,diffusion,diffusion,diffusion,diffusion,True
+sciq_test_000003,sciq,bruising,bruising,goosebumps,goosebumps,False
+sciq_test_000004,sciq,immune system,immune system,immune system,immune system,True
+sciq_test_000005,sciq,nonvascular,nonvascular,triploblastic,triploblastic,False
+sciq_test_000006,sciq,to attract a mate,to attract a mate,to attract pollinators,to attract pollinators,False
+sciq_test_000007,sciq,food pyramid,food pyramid,food chain,food chain,False
+sciq_test_000008,sciq,continental drift,continental drift,continental drift,continental drift,True
+sciq_test_000009,sciq,torque,torque,torque,torque,True
+sciq_test_000010,sciq,equivalent,equivalent,terrestrial biomes,terrestrial biomes,False
+sciq_test_000011,sciq,fungi,fungi,fungi,fungi,True
+sciq_test_000012,sciq,diffusion,diffusion,osmosis,osmosis,False
+sciq_test_000013,sciq,lunar,lunar,lunar,lunar,True
+sciq_test_000014,sciq,axis,axis,axis,axis,True
+sciq_test_000015,sciq,ions,ions,atoms,atoms,False
+sciq_test_000016,sciq,ribosomes,ribosomes,ribosomes,ribosomes,True
+sciq_test_000017,sciq,laying eggs,laying eggs,live birth,live birth,False
+sciq_test_000018,sciq,fungi,fungi,animals,animals,False
+sciq_test_000019,sciq,renewable,renewable,renewable,renewable,True
+sciq_test_000020,sciq,RNA,rna,dna,dna,False
+sciq_test_000021,sciq,cretaceous period,cretaceous period,cenozoic era,cenozoic era,False
+sciq_test_000022,sciq,no,no,organ,organ,False
+sciq_test_000023,sciq,roger granger,roger granger,frederick cottrell,frederick cottrell,False
+sciq_test_000024,sciq,greenhouse gases,greenhouse gases,greenhouse gases,greenhouse gases,True
+sciq_test_000025,sciq,circular,circular,circular,circular,True
+sciq_test_000026,sciq,atoms,atoms,pores,pores,False
+sciq_test_000027,sciq,thyroid,thyroid,thyroid,thyroid,True
+sciq_test_000028,sciq,reactors,reactors,reactors,reactors,True
+sciq_test_000029,sciq,400,400,200,200,False
+sciq_test_000030,sciq,tumors,tumors,bacteria,bacteria,False
+sciq_test_000031,sciq,refraction,refraction,abrasion,abrasion,False
+sciq_test_000032,sciq,oxidation,oxidation,chemiosmosis,chemiosmosis,False
+sciq_test_000033,sciq,frames,frames,bolts,bolts,False
+sciq_test_000034,sciq,joint,joint,joint,joint,True
+sciq_test_000035,sciq,oxygen,oxygen,oxygen,oxygen,True
+sciq_test_000036,sciq,asteroids,asteroids,asteroids,asteroids,True
+sciq_test_000037,sciq,pole,pole,pole,pole,True
+sciq_test_000038,sciq,by dna ligase,by dna ligase,by dna ligase,by dna ligase,True
+sciq_test_000039,sciq,golgi apparatus,golgi apparatus,chloroplasts,chloroplasts,False
+sciq_test_000040,sciq,physiology,physiology,chemistry,chemistry,False
+sciq_test_000041,sciq,solvation,solvation,solvation,solvation,True
+sciq_test_000042,sciq,spores,spores,pollinators,pollinators,False
+sciq_test_000043,sciq,resist,resist,bear weight,bear weight,False
+sciq_test_000044,sciq,adaptive immune system,adaptive immune system,adaptive immune system,adaptive immune system,True
+sciq_test_000045,sciq,cardiac output,cardiac output,cardiac output,cardiac output,True
+sciq_test_000046,sciq,208,208,206,206,False
+sciq_test_000047,sciq,it shrinks,it shrinks,it expands,it expands,False
+sciq_test_000048,sciq,mutualism,mutualism,mutualism,mutualism,True
+sciq_test_000049,sciq,light,light,light,light,True
+sciq_test_000050,sciq,fossil,fossil,fossil record,fossil record,False

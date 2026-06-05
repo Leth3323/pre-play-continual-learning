@@ -1,0 +1,801 @@
+sample_id,task_name,split,input_text,target_text,source_dataset,replay_mode,replay_selection_strategy,random_selection_score,random_selection_rank,was_selected_for_replay
+sciq_train_000028,sciq,train,"Task: Answer the science question.
+Question: Humans possess greater diversity of what type, compared to laboratory animals?
+Options:
+A. pathogens
+B. genetics
+C. elements
+D. lifespans
+Answer:",genetics,allenai/sciq,random,random,0.9970306217337916,1,1
+sciq_train_000036,sciq,train,"Task: Answer the science question.
+Question: What are the three types of symbiotic relationships?
+Options:
+A. mutualism, communalism, parasitism
+B. symbiosis , communalism , parasitism
+C. altruism, conservatism, communalism
+D. pledgism, truism, greenism
+Answer:","mutualism, communalism, parasitism",allenai/sciq,random,random,0.9925454526178866,2,1
+sciq_train_000079,sciq,train,"Task: Answer the science question.
+Question: Air quality is a measure of what in the air?
+Options:
+A. pollutants
+B. water
+C. clouds
+D. gases
+Answer:",pollutants,allenai/sciq,random,random,0.9776822126054553,3,1
+sciq_train_000024,sciq,train,"Task: Answer the science question.
+Question: What is muscle tissue that is attached to the bone called?
+Options:
+A. cartilage
+B. skeletal tisse
+C. epithelial tissue
+D. ligament
+Answer:",skeletal tisse,allenai/sciq,random,random,0.9776334857459981,4,1
+sciq_train_000059,sciq,train,"Task: Answer the science question.
+Question: The genome of an organism consists of one or more what?
+Options:
+A. dna molecules
+B. require molecules
+C. hemoglobin molecules
+D. rna molecules
+Answer:",dna molecules,allenai/sciq,random,random,0.9753900950532933,5,1
+sciq_train_000002,sciq,train,"Task: Answer the science question.
+Question: What term is used to describe when a liquid is the temperature at which its equilibrium vapor pressure is equal to the pressure exerted on the liquid by its gaseous surroundings?
+Options:
+A. freezing point
+B. evaporating point
+C. burning point
+D. boiling point
+Answer:",boiling point,allenai/sciq,random,random,0.9462245377648041,6,1
+sciq_train_000073,sciq,train,"Task: Answer the science question.
+Question: Red-green color blindness is an example of a sex-linked condition caused by what?
+Options:
+A. genetic disorder
+B. recessive allele
+C. phenotype
+D. dominant gene
+Answer:",recessive allele,allenai/sciq,random,random,0.9279438495466851,7,1
+sciq_train_000045,sciq,train,"Task: Answer the science question.
+Question: Fluoride ion is widely used in water supplies to help prevent what?
+Options:
+A. tooth decay
+B. bacteria
+C. rust
+D. chlorine taste
+Answer:",tooth decay,allenai/sciq,random,random,0.9183145305431367,8,1
+sciq_train_000063,sciq,train,"Task: Answer the science question.
+Question: What part of an atom is electrically neutral?
+Options:
+A. neutrons
+B. protons
+C. electrons
+D. newtons
+Answer:",neutrons,allenai/sciq,random,random,0.8853810413219199,9,1
+sciq_train_000029,sciq,train,"Task: Answer the science question.
+Question: What are electromagnetic waves created by?
+Options:
+A. gravitational charges
+B. Static Charges
+C. particle charges
+D. oscillating charges
+Answer:",oscillating charges,allenai/sciq,random,random,0.8811962510468694,10,1
+sciq_train_000086,sciq,train,"Task: Answer the science question.
+Question: Plants are complex organisms with tissues organized into what?
+Options:
+A. systems
+B. families
+C. organs
+D. carbons
+Answer:",organs,allenai/sciq,random,random,0.8797637844004353,11,1
+sciq_train_000051,sciq,train,"Task: Answer the science question.
+Question: All living things are capable of what process whereby living things give rise to offspring?
+Options:
+A. reproduction
+B. cell division
+C. differentiation
+D. mitosis
+Answer:",reproduction,allenai/sciq,random,random,0.8334439418318753,12,1
+sciq_train_000047,sciq,train,"Task: Answer the science question.
+Question: Which type of cell can carry out more functions, eukaryotic cells or prokaryotic cells?
+Options:
+A. chromosomal cells
+B. Prokaryotic Cells
+C. both
+D. eukaryotic cells
+Answer:",eukaryotic cells,allenai/sciq,random,random,0.8290565222334145,13,1
+sciq_train_000078,sciq,train,"Task: Answer the science question.
+Question: Where are the oceans most polluted?
+Options:
+A. along reefs
+B. in warmer waters
+C. on the ocean floor
+D. along coasts
+Answer:",along coasts,allenai/sciq,random,random,0.8269499345561151,14,1
+sciq_train_000001,sciq,train,"Task: Answer the science question.
+Question: Virtually every task performed by living organisms requires this?
+Options:
+A. energy
+B. metals
+C. solids
+D. mineral
+Answer:",energy,allenai/sciq,random,random,0.7985218090241315,15,1
+sciq_train_000074,sciq,train,"Task: Answer the science question.
+Question: What can be switched off by a protein called the trp repressor?
+Options:
+A. the operon
+B. the chaperone protein
+C. the cytokine
+D. the genetic precursor
+Answer:",the operon,allenai/sciq,random,random,0.7966566832271263,16,1
+sciq_train_000011,sciq,train,"Task: Answer the science question.
+Question: What is the process called in which living things produce offspring?
+Options:
+A. photosynthesis
+B. diversification
+C. variation
+D. reproduction
+Answer:",reproduction,allenai/sciq,random,random,0.7937120638115951,17,1
+sciq_train_000099,sciq,train,"Task: Answer the science question.
+Question: What happens when turgid cells in a nonwoody tissue push against each other?
+Options:
+A. the tissue melts
+B. the tissues merge
+C. the tissue dies
+D. the tissue stiffens
+Answer:",the tissue stiffens,allenai/sciq,random,random,0.7809028017062956,18,1
+sciq_train_000026,sciq,train,"Task: Answer the science question.
+Question: Many cancers, as well as autism, are thought to have what component, which is certainly a factor in asthma?
+Options:
+A. ecological
+B. critical
+C. emotional
+D. environmental
+Answer:",environmental,allenai/sciq,random,random,0.7648373772035352,19,1
+sciq_train_000066,sciq,train,"Task: Answer the science question.
+Question: Which gas do people exhale during each breath?
+Options:
+A. nitrogen
+B. oxygen
+C. carbon dioxide
+D. carbon monoxide
+Answer:",carbon dioxide,allenai/sciq,random,random,0.7630625147109074,20,1
+sciq_train_000042,sciq,train,"Task: Answer the science question.
+Question: Maintaining a high metabolic rate takes a lot of what?
+Options:
+A. energy
+B. power
+C. fuel
+D. hydrogen
+Answer:",energy,allenai/sciq,random,random,0.7584487622722343,21,1
+sciq_train_000038,sciq,train,"Task: Answer the science question.
+Question: What is the term for the hard, round object produced within the mantle of a living shelled mollusk?
+Options:
+A. pearl
+B. ball
+C. glass
+D. root
+Answer:",pearl,allenai/sciq,random,random,0.7303350555112519,22,1
+sciq_train_000037,sciq,train,"Task: Answer the science question.
+Question: Hydras and sea anemones are examples of what form?
+Options:
+A. polyp
+B. anemone
+C. node
+D. lesions
+Answer:",polyp,allenai/sciq,random,random,0.7175459841063555,23,1
+sciq_train_000089,sciq,train,"Task: Answer the science question.
+Question: Carbon atoms have six neutrons as well as how many protons?
+Options:
+A. ten
+B. six
+C. four
+D. two
+Answer:",six,allenai/sciq,random,random,0.667627433628211,24,1
+sciq_train_000014,sciq,train,"Task: Answer the science question.
+Question: What is it called when plant roots absorb liquid water and release water vapor into the atmosphere?
+Options:
+A. perspiration
+B. transpiration
+C. sedimentation
+D. evaporation
+Answer:",transpiration,allenai/sciq,random,random,0.6652602327705055,25,1
+sciq_train_000067,sciq,train,"Task: Answer the science question.
+Question: Much of the iron produced is refined and converted into what?
+Options:
+A. wood
+B. plastic
+C. sugar
+D. steel
+Answer:",steel,allenai/sciq,random,random,0.6553170633593912,26,1
+sciq_train_000003,sciq,train,"Task: Answer the science question.
+Question: The process of breaking down food into nutrients is known as __________
+Options:
+A. energy
+B. filtration
+C. absorption
+D. digestion
+Answer:",digestion,allenai/sciq,random,random,0.6420247018972481,27,1
+sciq_train_000016,sciq,train,"Task: Answer the science question.
+Question: What do you call aquatic biomes in the ocean?
+Options:
+A. coastal biomes
+B. ocean dwellers
+C. marine biomes
+D. freshwater biomes
+Answer:",marine biomes,allenai/sciq,random,random,0.6344654950055995,28,1
+sciq_train_000054,sciq,train,"Task: Answer the science question.
+Question: Sounds, chemicals, and visual cues are examples of what between animals?
+Options:
+A. communication
+B. migration
+C. procreation
+D. circulation
+Answer:",communication,allenai/sciq,random,random,0.6097786045343353,29,1
+sciq_train_000019,sciq,train,"Task: Answer the science question.
+Question: The conducting zone of the respiratory system includes the organs and structures not directly involved in what?
+Options:
+A. gas exchange
+B. copper exchange
+C. gold exchange
+D. helium exchange
+Answer:",gas exchange,allenai/sciq,random,random,0.6082193269348328,30,1
+sciq_train_000077,sciq,train,"Task: Answer the science question.
+Question: What term means a representation of an object, system, or process?
+Options:
+A. icon
+B. pattern
+C. model
+D. presentation
+Answer:",model,allenai/sciq,random,random,0.5986434196175051,31,0
+sciq_train_000006,sciq,train,"Task: Answer the science question.
+Question: What kind of reactions are involved in processes ranging from the contraction of muscles to the digestion of food?
+Options:
+A. liquid
+B. mineral
+C. atomical
+D. chemical
+Answer:",chemical,allenai/sciq,random,random,0.5973060101521827,32,0
+sciq_train_000009,sciq,train,"Task: Answer the science question.
+Question: What are prokaryotic cells filled with?
+Options:
+A. chlorophyll
+B. cytoplasm
+C. protein
+D. rna
+Answer:",cytoplasm,allenai/sciq,random,random,0.5736215053103544,33,0
+sciq_train_000015,sciq,train,"Task: Answer the science question.
+Question: What is it called when electrons are shared equally?
+Options:
+A. nonpolar bonds
+B. metabolized bonds
+C. polar bonds
+D. helices bonds
+Answer:",nonpolar bonds,allenai/sciq,random,random,0.5725733357932807,34,0
+sciq_train_000035,sciq,train,"Task: Answer the science question.
+Question: Tendons connecting the scapula to the humerus form what, which is the circle of tendons around the shoulder joint?
+Options:
+A. wrist cuff
+B. thigh cuff
+C. rotator cuff
+D. knee cuff
+Answer:",rotator cuff,allenai/sciq,random,random,0.5518540106218269,35,0
+sciq_train_000044,sciq,train,"Task: Answer the science question.
+Question: What is the process bacteria use to break down chemicals into food?
+Options:
+A. cellular respiration
+B. gametogenesis
+C. chemosynthesis
+D. biosynthesis
+Answer:",chemosynthesis,allenai/sciq,random,random,0.5434132143380348,36,0
+sciq_train_000091,sciq,train,"Task: Answer the science question.
+Question: Some soil water can flow through easily. what kind of soil is this?
+Options:
+A. permeable
+B. porous
+C. dense
+D. Stationary
+Answer:",permeable,allenai/sciq,random,random,0.5419095295385167,37,0
+sciq_train_000088,sciq,train,"Task: Answer the science question.
+Question: Is purifying water a simple or complicated process?
+Options:
+A. expensive
+B. impossible
+C. complicated
+D. simple
+Answer:",complicated,allenai/sciq,random,random,0.5349805179139951,38,0
+sciq_train_000082,sciq,train,"Task: Answer the science question.
+Question: What's it called when the reaction is sped up until equilibrium is established?
+Options:
+A. favoring
+B. division
+C. pushing
+D. limiting
+Answer:",favoring,allenai/sciq,random,random,0.5037972472094753,39,0
+sciq_train_000076,sciq,train,"Task: Answer the science question.
+Question: What process do all species use to make the next generation?
+Options:
+A. differentiation
+B. separation
+C. variation
+D. reproduction
+Answer:",reproduction,allenai/sciq,random,random,0.4787404847674732,40,0
+sciq_train_000090,sciq,train,"Task: Answer the science question.
+Question: Which organ breaks down amino acids and toxins that are in the blood?
+Options:
+A. kidney
+B. liver
+C. small intestine
+D. skin
+Answer:",liver,allenai/sciq,random,random,0.47648338604762397,41,0
+sciq_train_000049,sciq,train,"Task: Answer the science question.
+Question: What is the attachment of ducklings to their mother an example of?
+Options:
+A. imprinting
+B. magnetism
+C. impressionism
+D. validating
+Answer:",imprinting,allenai/sciq,random,random,0.47576108895671576,42,0
+sciq_train_000022,sciq,train,"Task: Answer the science question.
+Question: What is the biogeochemical cycle that recycles water called?
+Options:
+A. water theory
+B. water cycle
+C. Liquid Cycle
+D. Water Table
+Answer:",water cycle,allenai/sciq,random,random,0.4531758625324238,43,0
+sciq_train_000048,sciq,train,"Task: Answer the science question.
+Question: What changes the chemical composition of a substance and can only occur through a chemical reaction?
+Options:
+A. Oxygen Changes
+B. carbon changes
+C. chemical changes
+D. mineral changes
+Answer:",chemical changes,allenai/sciq,random,random,0.44514791388083497,44,0
+sciq_train_000040,sciq,train,"Task: Answer the science question.
+Question: Because action potentials are so brief, a neuron can produce hundreds per what?
+Options:
+A. day
+B. minute
+C. lifetime
+D. second
+Answer:",second,allenai/sciq,random,random,0.44463071946490906,45,0
+sciq_train_000093,sciq,train,"Task: Answer the science question.
+Question: Which class of acids acetic acid (ch 3 cooh) belongs to?
+Options:
+A. common acids
+B. organic acids
+C. anorganic acids
+D. strong acids
+Answer:",organic acids,allenai/sciq,random,random,0.4219757389234938,46,0
+sciq_train_000032,sciq,train,"Task: Answer the science question.
+Question: Carbohydrates are an important group of biological molecules that includes sugars and these?
+Options:
+A. proteins
+B. starches
+C. fats
+D. vitamins
+Answer:",starches,allenai/sciq,random,random,0.4152566879727826,47,0
+sciq_train_000027,sciq,train,"Task: Answer the science question.
+Question: What is the unit of liquid measurement in the metric system?
+Options:
+A. gallon
+B. liter
+C. pint
+D. cylinder
+Answer:",liter,allenai/sciq,random,random,0.4145267292133832,48,0
+sciq_train_000095,sciq,train,"Task: Answer the science question.
+Question: What type of evolution often happens in species that have symbiotic relationships?
+Options:
+A. coevolution
+B. retrogression
+C. succession
+D. spontaneous evolution
+Answer:",coevolution,allenai/sciq,random,random,0.38680070103287134,49,0
+sciq_train_000021,sciq,train,"Task: Answer the science question.
+Question: G2 and s are phases in what process that is important in cell division?
+Options:
+A. osmosis
+B. cytokinesis
+C. mitosis
+D. tissues
+Answer:",mitosis,allenai/sciq,random,random,0.3705168438279929,50,0
+sciq_train_000030,sciq,train,"Task: Answer the science question.
+Question: What bonds form because they give atoms a more stable arrangement of electrons?
+Options:
+A. Polar bond
+B. Ionic bond
+C. Hydrogen bond
+D. covalent
+Answer:",covalent,allenai/sciq,random,random,0.37044445178319074,51,0
+sciq_train_000033,sciq,train,"Task: Answer the science question.
+Question: What is liquid water falling from the sky called?
+Options:
+A. clouds
+B. snow
+C. rain
+D. evaporation
+Answer:",rain,allenai/sciq,random,random,0.3671376530333684,52,0
+sciq_train_000017,sciq,train,"Task: Answer the science question.
+Question: Where is the food stored before being mixed with the chyme?
+Options:
+A. top of the stomach
+B. hemispherical of the stomach
+C. fundus of the stomach
+D. histopathology of the stomach
+Answer:",fundus of the stomach,allenai/sciq,random,random,0.36712677212374156,53,0
+sciq_train_000053,sciq,train,"Task: Answer the science question.
+Question: Which types of compounds are more likely to burn easily?
+Options:
+A. covalent
+B. chlorophyll
+C. hydroxyl
+D. salty
+Answer:",covalent,allenai/sciq,random,random,0.3525997004896624,54,0
+sciq_train_000098,sciq,train,"Task: Answer the science question.
+Question: Natural convection is driven by what forces?
+Options:
+A. magnetic
+B. buoyant
+C. gravitational
+D. thermal
+Answer:",buoyant,allenai/sciq,random,random,0.3500726293991937,55,0
+sciq_train_000018,sciq,train,"Task: Answer the science question.
+Question: What kind of reproduction results in offspring that are generally all genetically different?
+Options:
+A. asexual
+B. sexual
+C. individual
+D. perceptual
+Answer:",sexual,allenai/sciq,random,random,0.34154259332106374,56,0
+sciq_train_000094,sciq,train,"Task: Answer the science question.
+Question: What is another word for brooding- keeping eggs warm while the embryos develop?
+Options:
+A. incubation
+B. fertilization
+C. spawning
+D. hibernation
+Answer:",incubation,allenai/sciq,random,random,0.3246712717776803,57,0
+sciq_train_000058,sciq,train,"Task: Answer the science question.
+Question: What is a collection of lymphatic tissue that combines with epithelial tissue lining the mucosa throughout the body?
+Options:
+A. mucosa associated lymphoid tissue (malt)
+B. cottony associated lymphoid tissue ( malt )
+C. unassociated lymphoid tissue
+D. spheroids associated lymphoid tissue ( malt )
+Answer:",mucosa associated lymphoid tissue (malt),allenai/sciq,random,random,0.3231983154718927,58,0
+sciq_train_000072,sciq,train,"Task: Answer the science question.
+Question: What process tends to be external in aquatic species and internal in terrestrial species?
+Options:
+A. infection
+B. pollination
+C. migration
+D. fertilization
+Answer:",fertilization,allenai/sciq,random,random,0.319811938987826,59,0
+sciq_train_000064,sciq,train,"Task: Answer the science question.
+Question: Organic substances, including proteins, carbohydrates, and oils, contain what element?
+Options:
+A. acid
+B. carbon
+C. iron
+D. oxygen
+Answer:",carbon,allenai/sciq,random,random,0.3183854795634916,60,0
+sciq_train_000005,sciq,train,"Task: Answer the science question.
+Question: What occurs if oxygen cannot be obtained at a sufficient rate?
+Options:
+A. aerobic respiration
+B. malolactic respiration
+C. anaerobic respiration
+D. hyperventilation
+Answer:",anaerobic respiration,allenai/sciq,random,random,0.3052141836068879,61,0
+sciq_train_000013,sciq,train,"Task: Answer the science question.
+Question: What type of tissue runs the length of a stem in vascular bundles?
+Options:
+A. muscle tissue
+B. thermal tissue
+C. vascular tissue
+D. cardiac tissue
+Answer:",vascular tissue,allenai/sciq,random,random,0.29665721290283065,62,0
+sciq_train_000060,sciq,train,"Task: Answer the science question.
+Question: The “knee-jerk"" motion that people involuntarily perform after being struck in the knee in a certain way is an example of what kind of behavior?
+Options:
+A. reflex
+B. sensor
+C. reaction
+D. spasm
+Answer:",reflex,allenai/sciq,random,random,0.29011042784407814,63,0
+sciq_train_000055,sciq,train,"Task: Answer the science question.
+Question: What is the primary component of steel alloys?
+Options:
+A. iron
+B. titanium
+C. alluminum
+D. carbon
+Answer:",iron,allenai/sciq,random,random,0.2789836043698135,64,0
+sciq_train_000081,sciq,train,"Task: Answer the science question.
+Question: Respectively, which parts of the circulatory system carry blood from the heart toward capillaries, and return blood to the heart from capillaries?
+Options:
+A. arteries and veins
+B. arteries and capillaries
+C. parasites and veins
+D. organs and veins
+Answer:",arteries and veins,allenai/sciq,random,random,0.27436471701233156,65,0
+sciq_train_000043,sciq,train,"Task: Answer the science question.
+Question: Of all the mineral nutrients, what contributes the most to plant growth and crop yields?
+Options:
+A. nitrogen
+B. silicon
+C. methane
+D. oxygen
+Answer:",nitrogen,allenai/sciq,random,random,0.27032094744145796,66,0
+sciq_train_000080,sciq,train,"Task: Answer the science question.
+Question: What paired organs help regulate blood pressure through sodium ion and water retention and loss?
+Options:
+A. tissues
+B. lungs
+C. lymph nodes
+D. kidneys
+Answer:",kidneys,allenai/sciq,random,random,0.2618601607874127,67,0
+sciq_train_000096,sciq,train,"Task: Answer the science question.
+Question: Rise divided by run is called what?
+Options:
+A. slope
+B. mound
+C. hill
+D. steep
+Answer:",slope,allenai/sciq,random,random,0.2567144372540481,68,0
+sciq_train_000007,sciq,train,"Task: Answer the science question.
+Question: What part of the heart receives the blood is pumped from veins of the systemic circuit?
+Options:
+A. right atrium
+B. left atrium
+C. right ventricle
+D. left ventricle
+Answer:",right atrium,allenai/sciq,random,random,0.25411978140357716,69,0
+sciq_train_000068,sciq,train,"Task: Answer the science question.
+Question: The strength of acids is measured on what scale?
+Options:
+A. qcd
+B. Killalot
+C. μg
+D. ph
+Answer:",ph,allenai/sciq,random,random,0.25091338717289313,70,0
+sciq_train_000056,sciq,train,"Task: Answer the science question.
+Question: Compared with the molecules of many other substances, molecules of water are strongly attracted to what?
+Options:
+A. hydrogen
+B. each other
+C. helium
+D. nothing
+Answer:",each other,allenai/sciq,random,random,0.24467974815199323,71,0
+sciq_train_000083,sciq,train,"Task: Answer the science question.
+Question: What is the ability of an atom to emit charged particles and energy from its nucleus called?
+Options:
+A. conductivity
+B. power
+C. accumulation
+D. radioactivity
+Answer:",radioactivity,allenai/sciq,random,random,0.22813571313145897,72,0
+sciq_train_000023,sciq,train,"Task: Answer the science question.
+Question: What make distant objects appear both nearer and larger?
+Options:
+A. mirrors
+B. astrolabes
+C. telescopes
+D. lasers
+Answer:",telescopes,allenai/sciq,random,random,0.2259194938468685,73,0
+sciq_train_000100,sciq,train,"Task: Answer the science question.
+Question: What is the process that allows organisms with better traits to survive and produce?
+Options:
+A. succession
+B. adaptation
+C. natural selection
+D. spontaneous mutation
+Answer:",natural selection,allenai/sciq,random,random,0.22198452617263553,74,0
+sciq_train_000075,sciq,train,"Task: Answer the science question.
+Question: When volume does not change, temperature is proportional to what other property?
+Options:
+A. Length
+B. pressure
+C. Density
+D. resistance
+Answer:",pressure,allenai/sciq,random,random,0.20821003945013228,75,0
+sciq_train_000034,sciq,train,"Task: Answer the science question.
+Question: What is another name for collar cells?
+Options:
+A. clutches
+B. enzymes
+C. choanocytes
+D. sporozoans
+Answer:",choanocytes,allenai/sciq,random,random,0.2070800878313539,76,0
+sciq_train_000010,sciq,train,"Task: Answer the science question.
+Question: The chemical behavior of elements can largely be explained by what?
+Options:
+A. chemical configuration
+B. electron configurations
+C. proton configuration
+D. neutron configuration
+Answer:",electron configurations,allenai/sciq,random,random,0.20651789273799437,77,0
+sciq_train_000071,sciq,train,"Task: Answer the science question.
+Question: What simple sugar is the cell's primary source of energy?
+Options:
+A. nicotine
+B. carbon
+C. glucose
+D. chloride
+Answer:",glucose,allenai/sciq,random,random,0.1937648371008721,78,0
+sciq_train_000039,sciq,train,"Task: Answer the science question.
+Question: What is the study of forces in equilibrium?
+Options:
+A. law of inertia
+B. genomics
+C. statics
+D. law of conservation
+Answer:",statics,allenai/sciq,random,random,0.16418910414269527,79,0
+sciq_train_000070,sciq,train,"Task: Answer the science question.
+Question: What larger theory is einstein's equation part of?
+Options:
+A. theory of relativity
+B. cycle of relativity
+C. law of relativity
+D. excess of relativity
+Answer:",theory of relativity,allenai/sciq,random,random,0.1594035645093982,80,0
+sciq_train_000087,sciq,train,"Task: Answer the science question.
+Question: Water behind a dam has potential energy. moving water, such as in a waterfall or a rapidly flowing river, has this?
+Options:
+A. compression energy
+B. kinetic energy
+C. residual energy
+D. thermal energy
+Answer:",kinetic energy,allenai/sciq,random,random,0.1570026992581247,81,0
+sciq_train_000069,sciq,train,"Task: Answer the science question.
+Question: Transporting blood is the main job of the heart and what?
+Options:
+A. bones
+B. areolas
+C. blood vessels
+D. lymphatic system
+Answer:",blood vessels,allenai/sciq,random,random,0.15680840827459397,82,0
+sciq_train_000092,sciq,train,"Task: Answer the science question.
+Question: What term is used to describe phages capable of using both modes of replicating within a bacterium?
+Options:
+A. temperate phages
+B. bacteriophage
+C. moderate phages
+D. lambda phage
+Answer:",temperate phages,allenai/sciq,random,random,0.14618750267744907,83,0
+sciq_train_000008,sciq,train,"Task: Answer the science question.
+Question: What type of charge does a neutron have?
+Options:
+A. neutral or no charge
+B. half charge
+C. positive charge
+D. negative charge
+Answer:",neutral or no charge,allenai/sciq,random,random,0.12830695416261706,84,0
+sciq_train_000065,sciq,train,"Task: Answer the science question.
+Question: If the amount of force of that is applied is increased, what happens to the work that a machine is producing?
+Options:
+A. it's variable
+B. it's unchanged
+C. it is harder
+D. it is easier
+Answer:",it is easier,allenai/sciq,random,random,0.11432596926045957,85,0
+sciq_train_000085,sciq,train,"Task: Answer the science question.
+Question: What shapes, supports, and protects the cell?
+Options:
+A. the epithelium
+B. the chloroplast
+C. the cell wall
+D. the mesothelium
+Answer:",the cell wall,allenai/sciq,random,random,0.10749208651838194,86,0
+sciq_train_000052,sciq,train,"Task: Answer the science question.
+Question: What bonds cause water to have a high boiling point, leaving most water on earth in a liquid state rather than in a gaseous state?
+Options:
+A. carbon bonds
+B. potassium bonds
+C. hydrogen bonds
+D. helium bonds
+Answer:",hydrogen bonds,allenai/sciq,random,random,0.10319556780823957,87,0
+sciq_train_000046,sciq,train,"Task: Answer the science question.
+Question: Energy comes in discrete packages called what?
+Options:
+A. quota
+B. quasar
+C. quanta
+D. quasi
+Answer:",quanta,allenai/sciq,random,random,0.10175449427097327,88,0
+sciq_train_000025,sciq,train,"Task: Answer the science question.
+Question: Insulin is produced by what part of the body?
+Options:
+A. thyroid
+B. pancreas
+C. liver
+D. kidneys
+Answer:",pancreas,allenai/sciq,random,random,0.08551417583655552,89,0
+sciq_train_000061,sciq,train,"Task: Answer the science question.
+Question: Hydrocarbons are combined with oxygen in a series of enzymatic steps to product water, carbon dioxide, and energy, which is stored in the form of what?
+Options:
+A. dormant molecules
+B. energy
+C. light
+D. reactive molecules
+Answer:",reactive molecules,allenai/sciq,random,random,0.07754829672522212,90,0
+sciq_train_000050,sciq,train,"Task: Answer the science question.
+Question: Different feeding ""positions"" in a food chain or web are associated with what kinds of levels?
+Options:
+A. autotrophic
+B. heptic
+C. benthic
+D. trophic
+Answer:",trophic,allenai/sciq,random,random,0.0534162722243563,91,0
+sciq_train_000004,sciq,train,"Task: Answer the science question.
+Question: What is the branch of science that studies the physical world?
+Options:
+A. Ecology
+B. botany
+C. physics
+D. social science
+Answer:",physics,allenai/sciq,random,random,0.05331846305620047,92,0
+sciq_train_000097,sciq,train,"Task: Answer the science question.
+Question: Alleles that carry deadly diseases are usually which type?
+Options:
+A. dominant
+B. predominant
+C. inherited
+D. recessive
+Answer:",recessive,allenai/sciq,random,random,0.04996901020996769,93,0
+sciq_train_000057,sciq,train,"Task: Answer the science question.
+Question: What system of the body is generally responsible for breathing?
+Options:
+A. integumentary
+B. cardiac
+C. respiratory system
+D. excretory
+Answer:",respiratory system,allenai/sciq,random,random,0.0341032177467232,94,0
+sciq_train_000062,sciq,train,"Task: Answer the science question.
+Question: Which type of tree loses its leaves each fall and remains leafless in the winter?
+Options:
+A. conifer
+B. annual
+C. deciduous
+D. perennial
+Answer:",deciduous,allenai/sciq,random,random,0.02698244389786464,95,0
+sciq_train_000031,sciq,train,"Task: Answer the science question.
+Question: Sexual signaling molecules released by fungi are known as what?
+Options:
+A. sperm
+B. hormones
+C. vibrations
+D. pheromones
+Answer:",pheromones,allenai/sciq,random,random,0.02664934274523678,96,0
+sciq_train_000084,sciq,train,"Task: Answer the science question.
+Question: In the stomach, which material's arrival triggers churning and the release of gastric juices?
+Options:
+A. acid
+B. bile
+C. hair
+D. food
+Answer:",food,allenai/sciq,random,random,0.023235691997080088,97,0
+sciq_train_000012,sciq,train,"Task: Answer the science question.
+Question: Scientists use what scale to illustrate the order in which events on earth have happened?
+Options:
+A. cataclysmic time scale
+B. ecological succession
+C. geologic time scale
+D. fossil record
+Answer:",geologic time scale,allenai/sciq,random,random,0.023066139434891664,98,0
+sciq_train_000041,sciq,train,"Task: Answer the science question.
+Question: What is the place called where the axon of one neuron meets the dendrite of another?
+Options:
+A. synapse
+B. apoptosis
+C. uptake
+D. neurotransmitter
+Answer:",synapse,allenai/sciq,random,random,0.01952622404951654,99,0
+sciq_train_000020,sciq,train,"Task: Answer the science question.
+Question: What do you call taxes placed on products that produce carbon dioxide?
+Options:
+A. pollution tax
+B. chemical tax
+C. carbon taxes
+D. emission tax
+Answer:",carbon taxes,allenai/sciq,random,random,0.0005677860618272801,100,0

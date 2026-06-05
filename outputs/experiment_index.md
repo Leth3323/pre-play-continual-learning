@@ -68,11 +68,26 @@ outputs/
 │   │   ├── exp009_replay_random_buffer30_seed123_3tasks/
 │   │   ├── exp009_replay_surprise_buffer30_seed123_3tasks/
 │   │   └── exp009_summary.md
-│   └── exp010/
-│       ├── exp010_no_replay_3tasks/
-│       ├── exp010_random_replay_3tasks/
-│       ├── exp010_scored_replay_3tasks/
-│       └── exp010_summary.md
+│   ├── exp010/
+│   │   ├── exp010_no_replay_3tasks/
+│   │   ├── exp010_random_replay_3tasks/
+│   │   ├── exp010_scored_replay_3tasks/
+│   │   └── exp010_summary.md
+│   └── exp011/
+│       ├── seed100_no_replay_3tasks/
+│       ├── seed100_random_replay_3tasks/
+│       ├── seed100_scored_replay_3tasks/
+│       ├── seed13_no_replay_3tasks/
+│       ├── seed13_random_replay_3tasks/
+│       ├── seed13_scored_replay_3tasks/
+│       ├── seed42_no_replay_3tasks/
+│       ├── seed42_random_replay_3tasks/
+│       ├── seed42_scored_replay_3tasks/
+│       ├── exp011_seed_comparison.csv
+│       └── exp011_summary.md
+├── final_review/
+│   ├── audit_report.md
+│   └── final_reviewed_dataset.csv
 ├── experiment_index.md
 ├── overall_experiment_analysis.md
 └── preplay_project_status_report.md
@@ -91,6 +106,7 @@ outputs/
 | exp008 | a baseline experiment with a replay versus no-replay comparison | sciq -> arc_challenge -> boolq | exp008_replay_predicted_utility_expanded_scorer_buffer30_seed42_3tasks | exp008_no_replay_seed42_3tasks | `/Users/chenxiangkai/PycharmProjects/Pre_play/outputs/experiments/exp008` | [exp008_summary.md](experiments/exp008/exp008_summary.md) |
 | exp009 | a predicted_utility robustness check comparing previous and expanded scorer sources under seed 123 | sciq -> arc_challenge -> boolq | exp009_replay_random_buffer30_seed123_3tasks, exp009_replay_surprise_buffer30_seed123_3tasks, exp009_replay_predicted_utility_prev_scorer_buffer30_seed123_3tasks, exp009_replay_predicted_utility_expanded_scorer_buffer30_seed123_3tasks | exp009_no_replay_seed123_3tasks | `/Users/chenxiangkai/PycharmProjects/Pre_play/outputs/experiments/exp009` | [exp009_summary.md](experiments/exp009/exp009_summary.md) |
 | exp010 | random replay baseline comparison created on 2026-06-05; key conclusion: scored replay beats random replay on average validation/test accuracy, while random replay does not clearly improve over no replay | sciq -> arc_challenge -> boolq | exp010_scored_replay_3tasks, exp010_random_replay_3tasks | exp010_no_replay_3tasks | `/Users/chenxiangkai/PycharmProjects/Pre_play/outputs/experiments/exp010` | [exp010_summary.md](experiments/exp010/exp010_summary.md) |
+| exp011 | a multi-seed robustness analysis comparing no replay, scored replay, and random replay | sciq -> arc_challenge -> boolq | seed13_scored_replay_3tasks, seed13_random_replay_3tasks, seed42_scored_replay_3tasks, seed42_random_replay_3tasks, seed100_scored_replay_3tasks, seed100_random_replay_3tasks | seed13_no_replay_3tasks, seed42_no_replay_3tasks, seed100_no_replay_3tasks | `/Users/chenxiangkai/PycharmProjects/Pre_play/outputs/experiments/exp011` | [exp011_summary.md](experiments/exp011/exp011_summary.md) |
 
 ## Comparison Summary
 
@@ -287,6 +303,16 @@ Full report: [exp009_summary.md](experiments/exp009/exp009_summary.md)
 - Key conclusion: scored replay is stronger than random replay in this exploratory single-seed run; random replay does not clearly improve over no replay.
 
 Full report: [exp010_summary.md](experiments/exp010/exp010_summary.md)
+### exp011 Comparison
+
+- Purpose: multi-seed robustness analysis for no replay vs scored replay vs random replay.
+- Task sequence: `sciq -> arc_challenge -> boolq`
+- Seeds: `13`, `42`, `100`
+- Compared conditions: no replay, scored replay, random replay.
+- Data source note: train/validation/test samples come from `data/processed` JSONL files. `outputs/final_review/final_reviewed_dataset.csv` is attached as an audited replay / utility review provenance source only; it is not a full train/validation/test replacement.
+- Summary path: [exp011_summary.md](experiments/exp011/exp011_summary.md)
+- Machine-readable CSV path: [exp011_seed_comparison.csv](experiments/exp011/exp011_seed_comparison.csv)
+- Key conclusion: mixed. No replay has the highest across-seed mean test accuracy, while replay conditions have higher mean validation accuracy and slightly lower mean forgetting. Scored replay is not consistently better than random replay, and random replay is not consistently better than no replay.
 
 ## Overall Notes
-Across the available experiment pairs, replay was mixed overall. The average final test delta was 0.0072, but the direction of the effect varied by task or experiment.
+Across the available experiment pairs, replay was mixed overall. The average final test delta was 0.0021, but the direction of the effect varied by task or experiment.

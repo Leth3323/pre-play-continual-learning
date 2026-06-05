@@ -195,6 +195,14 @@ def write_text(output_path: Path, text: str) -> None:
     output_path.write_text(text, encoding="utf-8")
 
 
+def format_project_relative_path(config: AppConfig, input_path: Path) -> str:
+    """Format a path relative to the project root when possible."""
+    try:
+        return str(input_path.relative_to(config.paths.project_root))
+    except ValueError:
+        return str(input_path)
+
+
 def build_config_payload(
     config: AppConfig,
     run_paths,
@@ -218,14 +226,16 @@ def build_config_payload(
         "replay_enabled": replay_enabled,
         "replay_mode": config.replay.replay_mode,
         "task_order": list(config.data.task_order),
-        "data_dir": str(config.data.data_dir),
+        "data_dir": format_project_relative_path(config, config.data.data_dir),
         "data_source": config.data.data_source,
         "use_audited_review": config.data.use_audited_review,
         "audited_review_csv": (
-            str(config.data.audited_review_csv)
+            format_project_relative_path(config, config.data.audited_review_csv)
             if config.data.use_audited_review and config.data.audited_review_csv is not None
             else None
         ),
+        "train_eval_source_note": config.data.train_eval_source_note,
+        "audited_review_source_note": config.data.audited_review_source_note,
         "train_source": config.data.train_eval_source_note,
         "eval_source": config.data.train_eval_source_note,
         "audited_review_source": config.data.audited_review_source_note,
