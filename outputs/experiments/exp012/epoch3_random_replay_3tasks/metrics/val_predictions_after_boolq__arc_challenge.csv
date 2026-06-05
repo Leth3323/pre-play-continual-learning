@@ -1,0 +1,31 @@
+sample_id,task_name,prediction,normalized_prediction,target_text,normalized_target_text,is_correct
+arc_challenge_val_000001,arc_challenge,the aging process,the aging process,the supplements,the supplements,False
+arc_challenge_val_000002,arc_challenge,Burning areas would be more easily contained.,burning areas would be more easily contained.,Broadleaf species would replace pine species.,broadleaf species would replace pine species.,False
+arc_challenge_val_000003,arc_challenge,The winds could blow air pollution toward land.,the winds could blow air pollution toward land.,The winds could be converted to electrical energy.,the winds could be converted to electrical energy.,False
+arc_challenge_val_000004,arc_challenge,the heights of ocean waves,the heights of ocean waves,the amounts of daylight,the amounts of daylight,False
+arc_challenge_val_000005,arc_challenge,decreases,decreases,increases,increases,False
+arc_challenge_val_000006,arc_challenge,90 days,90 days,30 days,30 days,False
+arc_challenge_val_000007,arc_challenge,Both asteroids and comets are solids.,both asteroids and comets are solids.,"Asteroids are solid, and comets are gaseous.",asteroids are solid and comets are gaseous.,False
+arc_challenge_val_000008,arc_challenge,These chemicals can self-assemble into a structure that replicates.,these chemicals can self-assemble into a structure that replicates.,These chemicals can self-assemble into a structure that replicates.,these chemicals can self-assemble into a structure that replicates.,True
+arc_challenge_val_000009,arc_challenge,temperature.,temperature.,mass.,mass.,False
+arc_challenge_val_000010,arc_challenge,increases habitat destruction,increases habitat destruction,reduces trees that are cut,reduces trees that are cut,False
+arc_challenge_val_000011,arc_challenge,using water to produce electricity,using water to produce electricity,directing runoff from cropland into a lake,directing runoff from cropland into a lake,False
+arc_challenge_val_000012,arc_challenge,the atmosphere and lithosphere,the atmosphere and lithosphere,the hydrosphere and atmosphere,the hydrosphere and atmosphere,False
+arc_challenge_val_000013,arc_challenge,color,color,state,state,False
+arc_challenge_val_000014,arc_challenge,work,work,power,power,False
+arc_challenge_val_000015,arc_challenge,water temperature,water temperature,water pressure,water pressure,False
+arc_challenge_val_000016,arc_challenge,electrical energy.,electrical energy.,solar energy.,solar energy.,False
+arc_challenge_val_000017,arc_challenge,nuclear power plant,nuclear power plant,solar roof panels,solar roof panels,False
+arc_challenge_val_000018,arc_challenge,elevation,elevation,gradient,gradient,False
+arc_challenge_val_000019,arc_challenge,by changing temperature conditions that single-celled producers require,by changing temperature conditions that single-celled producers require,by changing temperature conditions that single-celled producers require,by changing temperature conditions that single-celled producers require,True
+arc_challenge_val_000020,arc_challenge,An iron nail becomes orange and flaky on the surface.,an iron nail becomes orange and flaky on the surface.,An iron nail becomes orange and flaky on the surface.,an iron nail becomes orange and flaky on the surface.,True
+arc_challenge_val_000021,arc_challenge,20 m/s,20 m/s,20 m/s,20 m/s,True
+arc_challenge_val_000022,arc_challenge,oxygen,oxygen,oxygen,oxygen,True
+arc_challenge_val_000023,arc_challenge,increases the amount of wood there is to burn,increases the amount of wood there is to burn,adds more oxygen needed for burning,adds more oxygen needed for burning,False
+arc_challenge_val_000024,arc_challenge,two different elements,two different elements,a salt and water,a salt and water,False
+arc_challenge_val_000025,arc_challenge,lions preying on zebras,lions preying on zebras,lions preying on zebras,lions preying on zebras,True
+arc_challenge_val_000026,arc_challenge,The bulb gets hot.,the bulb gets hot.,The bulb gets hot.,the bulb gets hot.,True
+arc_challenge_val_000027,arc_challenge,It should be poured into a waste container.,it should be poured into a waste container.,It should be poured into a waste container.,it should be poured into a waste container.,True
+arc_challenge_val_000028,arc_challenge,Precipitation must begin to fall and run off.,precipitation must begin to fall and run off.,Water vapor must lose heat energy.,water vapor must lose heat energy.,False
+arc_challenge_val_000029,arc_challenge,protecting its young,protecting its young,opening garbage can lids,opening garbage can lids,False
+arc_challenge_val_000030,arc_challenge,"The x-axis should be labeled as distance, which is the independent variable.",the x-axis should be labeled as distance which is the independent variable.,"The x-axis should be labeled as time, which is the independent variable.",the x-axis should be labeled as time which is the independent variable.,False

@@ -1,0 +1,51 @@
+sample_id,task_name,prediction,normalized_prediction,target_text,normalized_target_text,is_correct
+arc_challenge_test_000001,arc_challenge,Offspring come from identical parents.,offspring come from identical parents.,Traits from two parents are combined.,traits from two parents are combined.,False
+arc_challenge_test_000002,arc_challenge,An unbalanced force causes acceleration.,an unbalanced force causes acceleration.,An unbalanced force causes acceleration.,an unbalanced force causes acceleration.,True
+arc_challenge_test_000003,arc_challenge,1 year,1 year,24 hours,24 hours,False
+arc_challenge_test_000004,arc_challenge,the new construction of buildings along the coast,the new construction of buildings along the coast,the buildup of dunes along the coast over time,the buildup of dunes along the coast over time,False
+arc_challenge_test_000005,arc_challenge,Exothermic because energy is released.,exothermic because energy is released.,Endothermic because energy is absorbed.,endothermic because energy is absorbed.,False
+arc_challenge_test_000006,arc_challenge,6.0 km/h2,6.0 km/h2,12.0 km/h^2,12.0 km/h^2,False
+arc_challenge_test_000007,arc_challenge,Salt is the solvent and water is the solution.,salt is the solvent and water is the solution.,Salt is the solute and water is the solvent.,salt is the solute and water is the solvent.,False
+arc_challenge_test_000008,arc_challenge,an electron.,an electron.,an electron.,an electron.,True
+arc_challenge_test_000009,arc_challenge,release heat to the surrounding atmosphere.,release heat to the surrounding atmosphere.,move more freely in relation to each other.,move more freely in relation to each other.,False
+arc_challenge_test_000010,arc_challenge,to help with cell division,to help with cell division,to give structural support,to give structural support,False
+arc_challenge_test_000011,arc_challenge,convection,convection,conduction,conduction,False
+arc_challenge_test_000012,arc_challenge,There was more force in the winner's kicks and strokes.,there was more force in the winner's kicks and strokes.,There was more gravitational pull on the winner.,there was more gravitational pull on the winner.,False
+arc_challenge_test_000013,arc_challenge,"observing the color of the whole apple, then observing the color of the apple pieces",observing the color of the whole apple then observing the color of the apple pieces,"determining the mass of the whole apple, then determining the mass of the apple pieces",determining the mass of the whole apple then determining the mass of the apple pieces,False
+arc_challenge_test_000014,arc_challenge,balance,balance,balance,balance,True
+arc_challenge_test_000015,arc_challenge,observe and record behaviors,observe and record behaviors,observe and record behaviors,observe and record behaviors,True
+arc_challenge_test_000016,arc_challenge,There is less rainfall in the desert.,there is less rainfall in the desert.,There is less water vapor in the desert air.,there is less water vapor in the desert air.,False
+arc_challenge_test_000017,arc_challenge,Water can change phase.,water can change phase.,Water can change phase.,water can change phase.,True
+arc_challenge_test_000018,arc_challenge,light to electrical to sound,light to electrical to sound,mechanical to sound,mechanical to sound,False
+arc_challenge_test_000019,arc_challenge,NO_2,no_2,CO_{2},co_{2},False
+arc_challenge_test_000020,arc_challenge,a physical change because a new substance was formed,a physical change because a new substance was formed,a chemical change because a new substance was formed,a chemical change because a new substance was formed,False
+arc_challenge_test_000021,arc_challenge,a frozen plain,a frozen plain,a frozen plain,a frozen plain,True
+arc_challenge_test_000022,arc_challenge,energy,energy,water,water,False
+arc_challenge_test_000023,arc_challenge,wind direction,wind direction,air pressure,air pressure,False
+arc_challenge_test_000024,arc_challenge,Purple martins will increase and starlings will increase.,purple martins will increase and starlings will increase.,Purple martins will decrease and starlings will increase.,purple martins will decrease and starlings will increase.,False
+arc_challenge_test_000025,arc_challenge,argon (Ar),argon (ar),argon (Ar),argon (ar),True
+arc_challenge_test_000026,arc_challenge,The atoms no longer exist once the animal has decomposed.,the atoms no longer exist once the animal has decomposed.,The atoms recycle back into the environment.,the atoms recycle back into the environment.,False
+arc_challenge_test_000027,arc_challenge,Recycle the old ammonia bottle.,recycle the old ammonia bottle.,Label the new container clearly.,label the new container clearly.,False
+arc_challenge_test_000028,arc_challenge,The shape of the magnesium ribbon changed.,the shape of the magnesium ribbon changed.,The burning magnesium produced light.,the burning magnesium produced light.,False
+arc_challenge_test_000029,arc_challenge,atmosphere,atmosphere,biosphere,biosphere,False
+arc_challenge_test_000030,arc_challenge,They conjugate.,they conjugate.,They divide vertically.,they divide vertically.,False
+arc_challenge_test_000031,arc_challenge,double pan balance,double pan balance,graduated cylinder,graduated cylinder,False
+arc_challenge_test_000032,arc_challenge,an increase in algae and phytoplankton during upwelling,an increase in algae and phytoplankton during upwelling,an increase in algae and phytoplankton during upwelling,an increase in algae and phytoplankton during upwelling,True
+arc_challenge_test_000033,arc_challenge,distance to the nearest mountain range,distance to the nearest mountain range,circulation patterns of regional air masses,circulation patterns of regional air masses,False
+arc_challenge_test_000034,arc_challenge,The Moon goes around Earth and the Moon every day.,the moon goes around earth and the moon every day.,The Moon reflects light from the Sun all the time.,the moon reflects light from the sun all the time.,False
+arc_challenge_test_000035,arc_challenge,Radio waves travel faster.,radio waves travel faster.,They both travel at the same speed.,they both travel at the same speed.,False
+arc_challenge_test_000036,arc_challenge,Heat caused a change in state.,heat caused a change in state.,Heat caused a change in state.,heat caused a change in state.,True
+arc_challenge_test_000037,arc_challenge,"What will be done with the fluids in the gas tank, the radiator, and the batteries?",what will be done with the fluids in the gas tank the radiator and the batteries?,What will be done to recycle the batteries?,what will be done to recycle the batteries?,False
+arc_challenge_test_000038,arc_challenge,There is greater precipitation.,there is greater precipitation.,There is greater precipitation.,there is greater precipitation.,True
+arc_challenge_test_000039,arc_challenge,transverse,transverse,transverse,transverse,True
+arc_challenge_test_000040,arc_challenge,sometimes closer to the Earth than it is to the Earth and sometimes closer to the Earth than it is to the Earth,sometimes closer to the earth than it is to the earth and sometimes closer to the earth than it is to the earth,always much closer to the Earth than it is to the Sun,always much closer to the earth than it is to the sun,False
+arc_challenge_test_000041,arc_challenge,nucleus,nucleus,isotope,isotope,False
+arc_challenge_test_000042,arc_challenge,Cl_2,cl_2,ZnCl_{2},zncl_{2},False
+arc_challenge_test_000043,arc_challenge,Lysozyme is converted to another chemical by a bacterial cell wall molecule.,lysozyme is converted to another chemical by a bacterial cell wall molecule.,Lysozyme breaks a specific type of bond in a bacterial cell wall molecule.,lysozyme breaks a specific type of bond in a bacterial cell wall molecule.,False
+arc_challenge_test_000044,arc_challenge,not well defined.,not well defined.,too small.,too small.,False
+arc_challenge_test_000045,arc_challenge,analyzing data,analyzing data,comparing to a control,comparing to a control,False
+arc_challenge_test_000046,arc_challenge,changes in the fuel source of a star,changes in the fuel source of a star,flickers in the brightness of a star,flickers in the brightness of a star,False
+arc_challenge_test_000047,arc_challenge,an increase in the use of fossil fuels,an increase in the use of fossil fuels,a decrease in air pollution,a decrease in air pollution,False
+arc_challenge_test_000048,arc_challenge,The lithium was dissolved by the water.,the lithium was dissolved by the water.,A chemical change took place.,a chemical change took place.,False
+arc_challenge_test_000049,arc_challenge,surface atmosphere.,surface atmosphere.,rocky terrain.,rocky terrain.,False
+arc_challenge_test_000050,arc_challenge,primary succession,primary succession,primary succession,primary succession,True

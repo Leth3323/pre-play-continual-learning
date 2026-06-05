@@ -1,0 +1,31 @@
+sample_id,task_name,prediction,normalized_prediction,target_text,normalized_target_text,is_correct
+sciq_val_000001,sciq,neurotoxin,neurotoxin,prolactin,prolactin,False
+sciq_val_000002,sciq,fatty ions,fatty ions,bicarbonate ions,bicarbonate ions,False
+sciq_val_000003,sciq,carbon rain,carbon rain,acid rain,acid rain,False
+sciq_val_000004,sciq,defecate,defecate,breed,breed,False
+sciq_val_000005,sciq,an oxygen catalyst,an oxygen catalyst,an acid catalyst,an acid catalyst,False
+sciq_val_000006,sciq,snakes and bacteria,snakes and bacteria,fungus and bacteria,fungus and bacteria,False
+sciq_val_000007,sciq,mildew,mildew,mosses,mosses,False
+sciq_val_000008,sciq,range,range,range,range,True
+sciq_val_000009,sciq,volcanic eruptions,volcanic eruptions,hunting by humans,hunting by humans,False
+sciq_val_000010,sciq,ammonia,ammonia,ammonia,ammonia,True
+sciq_val_000011,sciq,intracellular,intracellular,intracellular,intracellular,True
+sciq_val_000012,sciq,galileo,galileo,galileo,galileo,True
+sciq_val_000013,sciq,fission flux,fission flux,neutron flux,neutron flux,False
+sciq_val_000014,sciq,trace fossils,trace fossils,index fossils,index fossils,False
+sciq_val_000015,sciq,pressure conservation,pressure conservation,energy conservation,energy conservation,False
+sciq_val_000016,sciq,carbon compounds,carbon compounds,carbon compounds,carbon compounds,True
+sciq_val_000017,sciq,opaque,opaque,black,black,False
+sciq_val_000018,sciq,glaciers,glaciers,wave erosion,wave erosion,False
+sciq_val_000019,sciq,panorama,panorama,corona,corona,False
+sciq_val_000020,sciq,stomach,stomach,small intestine,small intestine,False
+sciq_val_000021,sciq,analogous models,analogous models,mathematical models,mathematical models,False
+sciq_val_000022,sciq,in vitro fertilization,in vitro fertilization,maturation of eggs,maturation of eggs,False
+sciq_val_000023,sciq,pressure,pressure,pressure,pressure,True
+sciq_val_000024,sciq,desert habitat,desert habitat,marine habitat,marine habitat,False
+sciq_val_000025,sciq,mars,mars,jupiter,jupiter,False
+sciq_val_000026,sciq,vesicle,vesicle,coelom,coelom,False
+sciq_val_000027,sciq,interloper t cells,interloper t cells,helper t cells,helper t cells,False
+sciq_val_000028,sciq,early jurassic,early jurassic,early jurassic,early jurassic,True
+sciq_val_000029,sciq,magnesium,magnesium,fluorine,fluorine,False
+sciq_val_000030,sciq,the mesoglea,the mesoglea,the mesoglea,the mesoglea,True

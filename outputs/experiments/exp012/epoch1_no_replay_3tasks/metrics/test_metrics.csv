@@ -1,0 +1,4 @@
+task_name,accuracy,num_samples,after_task,eval_split
+sciq,0.4,50,boolq,test
+arc_challenge,0.16,50,boolq,test
+boolq,0.5,50,boolq,test

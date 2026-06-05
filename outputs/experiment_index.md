@@ -3,12 +3,6 @@
 ## Overview
 This index tracks the experiment-level directory structure under `outputs/experiments/`, where each experiment id contains its nested run folders and one enriched `<exp_id>_summary.md` report.
 
-## Data Source Note
-
-- Experiments `exp001` through `exp010` are preliminary experiments using `data/processed/<task>/{train,val,test}.jsonl` as the train/validation/test source.
-- The current final audited review file is `outputs/final_review/final_reviewed_dataset.csv`. It contains reviewed train-split replay/utility metadata and should be treated as an audited replay review source, not a complete train/validation/test benchmark source.
-- Future final/main experiments should record `data_source`, `data_dir`, `use_audited_review`, and `audited_review_csv` in each `run_config.json`.
-
 ## Directory Structure
 ```text
 outputs/
@@ -73,18 +67,30 @@ outputs/
 │   │   ├── exp010_random_replay_3tasks/
 │   │   ├── exp010_scored_replay_3tasks/
 │   │   └── exp010_summary.md
-│   └── exp011/
-│       ├── seed100_no_replay_3tasks/
-│       ├── seed100_random_replay_3tasks/
-│       ├── seed100_scored_replay_3tasks/
-│       ├── seed13_no_replay_3tasks/
-│       ├── seed13_random_replay_3tasks/
-│       ├── seed13_scored_replay_3tasks/
-│       ├── seed42_no_replay_3tasks/
-│       ├── seed42_random_replay_3tasks/
-│       ├── seed42_scored_replay_3tasks/
-│       ├── exp011_seed_comparison.csv
-│       └── exp011_summary.md
+│   ├── exp011/
+│   │   ├── seed100_no_replay_3tasks/
+│   │   ├── seed100_random_replay_3tasks/
+│   │   ├── seed100_scored_replay_3tasks/
+│   │   ├── seed13_no_replay_3tasks/
+│   │   ├── seed13_random_replay_3tasks/
+│   │   ├── seed13_scored_replay_3tasks/
+│   │   ├── seed42_no_replay_3tasks/
+│   │   ├── seed42_random_replay_3tasks/
+│   │   ├── seed42_scored_replay_3tasks/
+│   │   ├── exp011_seed_comparison.csv
+│   │   └── exp011_summary.md
+│   └── exp012/
+│       ├── epoch1_no_replay_3tasks/
+│       ├── epoch1_random_replay_3tasks/
+│       ├── epoch1_scored_replay_3tasks/
+│       ├── epoch2_no_replay_3tasks/
+│       ├── epoch2_random_replay_3tasks/
+│       ├── epoch2_scored_replay_3tasks/
+│       ├── epoch3_no_replay_3tasks/
+│       ├── epoch3_random_replay_3tasks/
+│       ├── epoch3_scored_replay_3tasks/
+│       ├── exp012_epoch_comparison.csv
+│       └── exp012_summary.md
 ├── final_review/
 │   ├── audit_report.md
 │   └── final_reviewed_dataset.csv
@@ -107,6 +113,7 @@ outputs/
 | exp009 | a predicted_utility robustness check comparing previous and expanded scorer sources under seed 123 | sciq -> arc_challenge -> boolq | exp009_replay_random_buffer30_seed123_3tasks, exp009_replay_surprise_buffer30_seed123_3tasks, exp009_replay_predicted_utility_prev_scorer_buffer30_seed123_3tasks, exp009_replay_predicted_utility_expanded_scorer_buffer30_seed123_3tasks | exp009_no_replay_seed123_3tasks | `/Users/chenxiangkai/PycharmProjects/Pre_play/outputs/experiments/exp009` | [exp009_summary.md](experiments/exp009/exp009_summary.md) |
 | exp010 | random replay baseline comparison created on 2026-06-05; key conclusion: scored replay beats random replay on average validation/test accuracy, while random replay does not clearly improve over no replay | sciq -> arc_challenge -> boolq | exp010_scored_replay_3tasks, exp010_random_replay_3tasks | exp010_no_replay_3tasks | `/Users/chenxiangkai/PycharmProjects/Pre_play/outputs/experiments/exp010` | [exp010_summary.md](experiments/exp010/exp010_summary.md) |
 | exp011 | a multi-seed robustness analysis comparing no replay, scored replay, and random replay | sciq -> arc_challenge -> boolq | seed13_scored_replay_3tasks, seed13_random_replay_3tasks, seed42_scored_replay_3tasks, seed42_random_replay_3tasks, seed100_scored_replay_3tasks, seed100_random_replay_3tasks | seed13_no_replay_3tasks, seed42_no_replay_3tasks, seed100_no_replay_3tasks | `/Users/chenxiangkai/PycharmProjects/Pre_play/outputs/experiments/exp011` | [exp011_summary.md](experiments/exp011/exp011_summary.md) |
+| exp012 | an epoch sensitivity analysis comparing no replay, scored replay, and random replay at 1, 2, and 3 epochs | sciq -> arc_challenge -> boolq | epoch1_scored_replay_3tasks, epoch1_random_replay_3tasks, epoch2_scored_replay_3tasks, epoch2_random_replay_3tasks, epoch3_scored_replay_3tasks, epoch3_random_replay_3tasks | epoch1_no_replay_3tasks, epoch2_no_replay_3tasks, epoch3_no_replay_3tasks | `/Users/chenxiangkai/PycharmProjects/Pre_play/outputs/experiments/exp012` | [exp012_summary.md](experiments/exp012/exp012_summary.md) |
 
 ## Comparison Summary
 
@@ -314,5 +321,17 @@ Full report: [exp010_summary.md](experiments/exp010/exp010_summary.md)
 - Machine-readable CSV path: [exp011_seed_comparison.csv](experiments/exp011/exp011_seed_comparison.csv)
 - Key conclusion: mixed. No replay has the highest across-seed mean test accuracy, while replay conditions have higher mean validation accuracy and slightly lower mean forgetting. Scored replay is not consistently better than random replay, and random replay is not consistently better than no replay.
 
+### exp012 Comparison
+
+- Purpose: epoch sensitivity analysis for no replay vs scored replay vs random replay.
+- Task sequence: `sciq -> arc_challenge -> boolq`
+- Fixed seed: `42`
+- Epochs compared: `1`, `2`, `3`
+- Compared conditions: no replay, scored replay, random replay.
+- Data source note: train/validation/test samples come from `data/processed` JSONL files. `outputs/final_review/final_reviewed_dataset.csv` is attached as an audited replay / utility review provenance source only; it is not a full train/validation/test replacement.
+- Summary path: [exp012_summary.md](experiments/exp012/exp012_summary.md)
+- Machine-readable CSV path: [exp012_epoch_comparison.csv](experiments/exp012/exp012_epoch_comparison.csv)
+- Key conclusion: mixed but scored replay is strongest in this single-seed epoch sweep. Scored replay has the highest mean test accuracy at 1, 2, and 3 epochs, but its advantage is not monotonic. Random replay only catches up to no replay at 3 epochs. Forgetting increases relative to the 1-epoch setting for all conditions.
+
 ## Overall Notes
-Across the available experiment pairs, replay was mixed overall. The average final test delta was 0.0021, but the direction of the effect varied by task or experiment.
+Across the available experiment pairs, replay was mixed overall. The average final test delta was 0.0010, but the direction of the effect varied by task or experiment.

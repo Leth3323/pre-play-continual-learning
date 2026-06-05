@@ -1,0 +1,4 @@
+task_name,training_samples,epochs,steps,mean_loss,replay_selection_strategy,current_task_samples,replay_samples_used
+sciq,100,3,150,0.555484028448506,random,100,0
+arc_challenge,120,3,180,0.36203346389714475,random,100,20
+boolq,120,3,180,0.4365896389657994,random,100,20

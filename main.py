@@ -96,6 +96,12 @@ def parse_args() -> argparse.Namespace:
         help="Optional override for the experiment random seed.",
     )
     parser.add_argument(
+        "--epochs",
+        type=int,
+        default=None,
+        help="Optional override for the number of training epochs.",
+    )
+    parser.add_argument(
         "--replay-selection-strategy",
         type=str,
         default=None,
@@ -377,6 +383,11 @@ def main() -> None:
 
     if args.seed is not None:
         config.training.seed = args.seed
+
+    if args.epochs is not None:
+        if args.epochs <= 0:
+            raise ValueError("--epochs must be a positive integer.")
+        config.training.num_epochs = args.epochs
 
     if args.replay_buffer_size is not None:
         if args.replay_buffer_size <= 0:
