@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+from dataclasses import asdict
 import json
 import random
 from pathlib import Path
@@ -46,6 +47,16 @@ def parse_args() -> argparse.Namespace:
         "--no-replay",
         action="store_true",
         help="Disable replay for a baseline run.",
+    )
+    parser.add_argument(
+        "--replay-mode",
+        type=str,
+        default=None,
+        choices=("scored", "random", "none"),
+        help=(
+            "Replay mode: scored uses the configured scoring strategy, random samples "
+            "directly from the current task train split, none disables replay."
+        ),
     )
     parser.add_argument(
         "--replay-buffer-size",
@@ -133,6 +144,7 @@ def build_config_payload(
         "run_name": run_paths.run_name,
         "timestamp": run_paths.timestamp,
         "replay_enabled": replay_enabled,
+        "replay_mode": config.replay.replay_mode,
         "task_order": list(config.data.task_order),
         "model_name": config.model.model_name,
         "seed": config.training.seed,
@@ -195,6 +207,59 @@ def select_replay_batch(
     return [replay_candidates[index] for index in selected_indices]
 
 
+def select_random_samples_for_replay(
+    samples: list,
+    top_k: int,
+    seed: int,
+    task_name: str,
+) -> tuple[list, list[dict[str, Any]]]:
+    """Select replay samples directly from the current task with a deterministic RNG."""
+    if top_k <= 0 or not samples:
+        return [], []
+
+    rng = random.Random(f"{seed}:{task_name}:random_replay_buffer")
+    rows: list[dict[str, Any]] = []
+    keyed_samples = []
+    for sample in samples:
+        random_key = rng.random()
+        keyed_samples.append((random_key, sample))
+
+    ranked_samples = sorted(keyed_samples, key=lambda item: (item[0], item[1].sample_id), reverse=True)
+    selected_ids = {sample.sample_id for _, sample in ranked_samples[:top_k]}
+    for rank, (random_key, sample) in enumerate(ranked_samples, start=1):
+        row = asdict(sample)
+        row["replay_mode"] = "random"
+        row["replay_selection_strategy"] = "random"
+        row["random_selection_score"] = random_key
+        row["random_selection_rank"] = rank
+        row["was_selected_for_replay"] = int(sample.sample_id in selected_ids)
+        rows.append(row)
+
+    selected_samples = [sample for _, sample in ranked_samples[:top_k]]
+    return selected_samples, rows
+
+
+def build_random_score_rows(random_selection_rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Build score-like rows so downstream metadata files can mark random selections."""
+    rows: list[dict[str, Any]] = []
+    for row in random_selection_rows:
+        rows.append(
+            {
+                "sample_id": row.get("sample_id"),
+                "task_name": row.get("task_name"),
+                "split": row.get("split"),
+                "source_dataset": row.get("source_dataset"),
+                "input_text": row.get("input_text"),
+                "target_text": row.get("target_text"),
+                "token_count": None,
+                "loss": None,
+                "surprise_score": None,
+                "replay_selection_score": row.get("random_selection_score"),
+            }
+        )
+    return rows
+
+
 def main() -> None:
     """Run the continual fine-tuning experiment using local processed data only."""
     args = parse_args()
@@ -211,13 +276,42 @@ def main() -> None:
     if args.replay_selection_strategy is not None:
         config.replay.replay_selection_strategy = args.replay_selection_strategy
 
+    if args.replay_mode is None:
+        config.replay.replay_mode = (
+            "random"
+            if config.replay.replay_selection_strategy == "random"
+            else "scored"
+        )
+    else:
+        config.replay.replay_mode = args.replay_mode
+
+    if args.no_replay:
+        if args.replay_mode in {"scored", "random"}:
+            print(
+                "Warning: --no-replay was provided with --replay-mode "
+                f"{args.replay_mode}; using replay_mode=none."
+            )
+        config.replay.replay_mode = "none"
+
+    if config.replay.replay_mode == "random":
+        config.replay.replay_selection_strategy = "random"
+    elif (
+        args.replay_mode == "scored"
+        and config.replay.replay_selection_strategy == "random"
+    ):
+        print(
+            "Warning: --replay-mode scored cannot use random as a scored strategy; "
+            "using replay_selection_strategy=surprise."
+        )
+        config.replay.replay_selection_strategy = "surprise"
+
     if args.tasks:
         unknown_tasks = [task_name for task_name in args.tasks if task_name not in config.data.task_order]
         if unknown_tasks:
             raise ValueError(f"Unknown task names: {unknown_tasks}")
         config.data.task_order = args.tasks
 
-    if args.no_replay:
+    if config.replay.replay_mode == "none":
         config.replay.top_k_per_task = 0
         config.replay.replay_ratio = 0.0
 
@@ -245,7 +339,8 @@ def main() -> None:
 
     run_paths = create_run_paths(config, args.run_name)
     replay_enabled = (
-        config.replay.replay_buffer_size > 0
+        config.replay.replay_mode != "none"
+        and config.replay.replay_buffer_size > 0
         and config.replay.top_k_per_task > 0
         and config.replay.replay_ratio > 0.0
     )
@@ -284,6 +379,7 @@ def main() -> None:
     print(f"Run name: {run_paths.run_name}")
     print(f"Device: {config.training.device}")
     print(f"Tasks: {config.data.task_order}")
+    print(f"Replay mode: {config.replay.replay_mode}")
     print(f"Replay selection strategy: {config.replay.replay_selection_strategy}")
     if predicted_utility_artifact_paths is not None:
         print(f"Predicted utility scorer model: {predicted_utility_artifact_paths[0]}")
@@ -344,48 +440,62 @@ def main() -> None:
             )
 
         snapshot_path = run_paths.replay_buffers_dir / f"replay_buffer_after_{task_name}.jsonl"
-        score_rows = score_samples(
-            model=model,
-            tokenizer=tokenizer,
-            samples=current_train_samples,
-            config=config,
-            description=f"Scoring {task_name}",
-        )
-        allow_missing_predicted_utility = (
-            not replay_enabled and config.replay.replay_selection_strategy == "predicted_utility"
-        )
-        scored_selection_rows = attach_replay_selection_scores(
-            score_rows=score_rows,
-            strategy=config.replay.replay_selection_strategy,
-            task_name=task_name,
-            seed=config.training.seed,
-            run_dir=run_paths.run_dir,
-            utility_scorer_path=(
-                predicted_utility_artifact_paths[0]
-                if predicted_utility_artifact_paths is not None
-                else None
-            ),
-            utility_feature_columns_path=(
-                predicted_utility_artifact_paths[1]
-                if predicted_utility_artifact_paths is not None
-                else None
-            ),
-            allow_missing_predicted_utility=allow_missing_predicted_utility,
-        )
-
         selected_samples = []
         selected_sample_ids: set[str] = set()
-        if replay_enabled:
-            pd.DataFrame(score_rows).to_csv(
-                run_paths.replay_scores_dir / f"{task_name}_scores.csv",
+        if config.replay.replay_mode == "random":
+            selected_samples, random_selection_rows = select_random_samples_for_replay(
+                samples=current_train_samples,
+                top_k=config.replay.top_k_per_task,
+                seed=config.training.seed,
+                task_name=task_name,
+            )
+            scored_selection_rows = build_random_score_rows(random_selection_rows)
+            pd.DataFrame(random_selection_rows).to_csv(
+                run_paths.replay_buffers_dir / f"{task_name}_random_selection.csv",
                 index=False,
             )
-
-            selected_samples = select_samples_for_replay(
+        else:
+            score_rows = score_samples(
+                model=model,
+                tokenizer=tokenizer,
                 samples=current_train_samples,
-                scored_rows=scored_selection_rows,
-                top_k=config.replay.top_k_per_task,
+                config=config,
+                description=f"Scoring {task_name}",
             )
+            allow_missing_predicted_utility = (
+                not replay_enabled and config.replay.replay_selection_strategy == "predicted_utility"
+            )
+            scored_selection_rows = attach_replay_selection_scores(
+                score_rows=score_rows,
+                strategy=config.replay.replay_selection_strategy,
+                task_name=task_name,
+                seed=config.training.seed,
+                run_dir=run_paths.run_dir,
+                utility_scorer_path=(
+                    predicted_utility_artifact_paths[0]
+                    if predicted_utility_artifact_paths is not None
+                    else None
+                ),
+                utility_feature_columns_path=(
+                    predicted_utility_artifact_paths[1]
+                    if predicted_utility_artifact_paths is not None
+                    else None
+                ),
+                allow_missing_predicted_utility=allow_missing_predicted_utility,
+            )
+
+        if replay_enabled:
+            if config.replay.replay_mode == "scored":
+                pd.DataFrame(score_rows).to_csv(
+                    run_paths.replay_scores_dir / f"{task_name}_scores.csv",
+                    index=False,
+                )
+
+                selected_samples = select_samples_for_replay(
+                    samples=current_train_samples,
+                    scored_rows=scored_selection_rows,
+                    top_k=config.replay.top_k_per_task,
+                )
             selected_sample_ids = {sample.sample_id for sample in selected_samples}
             replay_buffer.add_samples(task_name, selected_samples)
             replay_buffer.save_snapshot(snapshot_path)
@@ -402,6 +512,7 @@ def main() -> None:
                         "task_name": sample.task_name,
                         "split": sample.split,
                         "source_dataset": sample.source_dataset,
+                        "replay_mode": config.replay.replay_mode,
                         "replay_selection_strategy": config.replay.replay_selection_strategy,
                         "replay_selection_score": selection_row.get("replay_selection_score"),
                     }

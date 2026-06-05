@@ -19,6 +19,7 @@ backup_before/
 data/
 
 # Experiment artifacts
+outputs/experiments/**/checkpoints/
 **/checkpoints/
 **/logs/
 **/replay_buffers/
@@ -35,6 +36,12 @@ data/
 *.pth
 *.bin
 *.safetensors
+pytorch_model.bin
+tokenizer.json
+tokenizer_config.json
+special_tokens_map.json
+spiece.model
+.scratch/
 
 # Local secrets
 .env

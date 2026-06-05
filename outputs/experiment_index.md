@@ -55,13 +55,18 @@ outputs/
 │   │   ├── exp008_replay_random_buffer30_seed42_3tasks/
 │   │   ├── exp008_replay_surprise_buffer30_seed42_3tasks/
 │   │   └── exp008_summary.md
-│   └── exp009/
-│       ├── exp009_no_replay_seed123_3tasks/
-│       ├── exp009_replay_predicted_utility_expanded_scorer_buffer30_seed123_3tasks/
-│       ├── exp009_replay_predicted_utility_prev_scorer_buffer30_seed123_3tasks/
-│       ├── exp009_replay_random_buffer30_seed123_3tasks/
-│       ├── exp009_replay_surprise_buffer30_seed123_3tasks/
-│       └── exp009_summary.md
+│   ├── exp009/
+│   │   ├── exp009_no_replay_seed123_3tasks/
+│   │   ├── exp009_replay_predicted_utility_expanded_scorer_buffer30_seed123_3tasks/
+│   │   ├── exp009_replay_predicted_utility_prev_scorer_buffer30_seed123_3tasks/
+│   │   ├── exp009_replay_random_buffer30_seed123_3tasks/
+│   │   ├── exp009_replay_surprise_buffer30_seed123_3tasks/
+│   │   └── exp009_summary.md
+│   └── exp010/
+│       ├── exp010_no_replay_3tasks/
+│       ├── exp010_random_replay_3tasks/
+│       ├── exp010_scored_replay_3tasks/
+│       └── exp010_summary.md
 ├── experiment_index.md
 ├── overall_experiment_analysis.md
 └── preplay_project_status_report.md
@@ -79,6 +84,7 @@ outputs/
 | exp007 | a baseline experiment with a replay versus no-replay comparison | sciq -> arc_challenge -> boolq | exp007_replay_predicted_utility_buffer30_seed42_3tasks | exp007_no_replay_seed42_3tasks | `/Users/chenxiangkai/PycharmProjects/Pre_play/outputs/experiments/exp007` | [exp007_summary.md](experiments/exp007/exp007_summary.md) |
 | exp008 | a baseline experiment with a replay versus no-replay comparison | sciq -> arc_challenge -> boolq | exp008_replay_predicted_utility_expanded_scorer_buffer30_seed42_3tasks | exp008_no_replay_seed42_3tasks | `/Users/chenxiangkai/PycharmProjects/Pre_play/outputs/experiments/exp008` | [exp008_summary.md](experiments/exp008/exp008_summary.md) |
 | exp009 | a predicted_utility robustness check comparing previous and expanded scorer sources under seed 123 | sciq -> arc_challenge -> boolq | exp009_replay_random_buffer30_seed123_3tasks, exp009_replay_surprise_buffer30_seed123_3tasks, exp009_replay_predicted_utility_prev_scorer_buffer30_seed123_3tasks, exp009_replay_predicted_utility_expanded_scorer_buffer30_seed123_3tasks | exp009_no_replay_seed123_3tasks | `/Users/chenxiangkai/PycharmProjects/Pre_play/outputs/experiments/exp009` | [exp009_summary.md](experiments/exp009/exp009_summary.md) |
+| exp010 | random replay baseline comparison created on 2026-06-05; key conclusion: scored replay beats random replay on average validation/test accuracy, while random replay does not clearly improve over no replay | sciq -> arc_challenge -> boolq | exp010_scored_replay_3tasks, exp010_random_replay_3tasks | exp010_no_replay_3tasks | `/Users/chenxiangkai/PycharmProjects/Pre_play/outputs/experiments/exp010` | [exp010_summary.md](experiments/exp010/exp010_summary.md) |
 
 ## Comparison Summary
 
@@ -254,6 +260,27 @@ Full report: [exp008_summary.md](experiments/exp008/exp008_summary.md)
 - The scorer-source pattern from `exp008` did not hold under seed `123`, so the saved predicted_utility result remains seed-sensitive and exploratory.
 
 Full report: [exp009_summary.md](experiments/exp009/exp009_summary.md)
+### exp010 Comparison
+
+- Description: random replay baseline comparison created on 2026-06-05.
+- Task sequence: `sciq -> arc_challenge -> boolq`
+- Compared runs: `exp010_no_replay_3tasks`, `exp010_scored_replay_3tasks`, `exp010_random_replay_3tasks`
+- Scored replay run folder: `exp010_scored_replay_3tasks`
+- Random replay run folder: `exp010_random_replay_3tasks`
+- No-replay run folder: `exp010_no_replay_3tasks`
+
+| Task | No Replay | Scored Replay | Random Replay | Best Test Setting |
+| --- | --- | --- | --- | --- |
+| sciq | 0.3800 | 0.3800 | 0.4000 | Random Replay |
+| arc_challenge | 0.1800 | 0.2600 | 0.1400 | Scored Replay |
+| boolq | 0.4800 | 0.4600 | 0.4800 | Tie (No Replay, Random Replay) |
+
+- Average validation accuracy: No Replay `0.3778`, Scored Replay `0.3889`, Random Replay `0.3556`.
+- Average test accuracy: No Replay `0.3467`, Scored Replay `0.3667`, Random Replay `0.3400`.
+- Average forgetting: No Replay `0.0000`, Scored Replay `0.0222`, Random Replay `0.0444`.
+- Key conclusion: scored replay is stronger than random replay in this exploratory single-seed run; random replay does not clearly improve over no replay.
+
+Full report: [exp010_summary.md](experiments/exp010/exp010_summary.md)
 
 ## Overall Notes
-Across the available experiment pairs, replay was mixed overall. The average final test delta was 0.0085, but the direction of the effect varied by task or experiment.
+Across the available experiment pairs, replay was mixed overall. The average final test delta was 0.0072, but the direction of the effect varied by task or experiment.

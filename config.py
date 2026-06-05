@@ -73,6 +73,7 @@ class ReplayConfig:
     replay_buffer_size: int = 100
     replay_ratio: float = 0.2
     top_k_per_task: int = 30
+    replay_mode: str = "scored"
     replay_selection_strategy: str = "surprise"
 
 
