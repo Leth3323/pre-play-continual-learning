@@ -49,6 +49,31 @@ def parse_args() -> argparse.Namespace:
         help="Disable replay for a baseline run.",
     )
     parser.add_argument(
+        "--data-dir",
+        type=str,
+        default=None,
+        help="Directory containing processed <task>/{train,val,test}.jsonl files.",
+    )
+    parser.add_argument(
+        "--use-audited-review",
+        action="store_true",
+        help=(
+            "Attach the final audited review CSV to this run for replay/utility review "
+            "provenance. Train/val/test still come from --data-dir."
+        ),
+    )
+    parser.add_argument(
+        "--audited-review-csv",
+        type=str,
+        default=None,
+        help="Path to the final audited replay review CSV.",
+    )
+    parser.add_argument(
+        "--dry-run-config",
+        action="store_true",
+        help="Validate data inputs, write run_config.json, then exit before model loading.",
+    )
+    parser.add_argument(
         "--replay-mode",
         type=str,
         default=None,
@@ -92,11 +117,19 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
+def resolve_project_path(config: AppConfig, path_text: str) -> Path:
+    """Resolve a CLI path relative to the project root when it is not absolute."""
+    path = Path(path_text).expanduser()
+    if path.is_absolute():
+        return path
+    return config.paths.project_root / path
+
+
 def ensure_local_processed_data(config: AppConfig) -> None:
     """Check that all processed JSONL files already exist locally."""
     missing_paths: list[Path] = []
     for task_name in config.data.task_order:
-        task_dir = config.paths.data_processed / task_name
+        task_dir = config.data.data_dir / task_name
         for split_name in ("train", "val", "test"):
             input_path = task_dir / f"{split_name}.jsonl"
             if not input_path.exists():
@@ -109,6 +142,44 @@ def ensure_local_processed_data(config: AppConfig) -> None:
             "Run 'python data_download.py' first, then 'python preprocess.py'.\n"
             f"Missing files:\n{missing_text}"
         )
+
+
+def inspect_audited_review_csv(input_path: Path) -> dict[str, Any]:
+    """Return lightweight metadata for an audited replay review CSV."""
+    if not input_path.exists():
+        raise FileNotFoundError(f"Audited review CSV not found: {input_path}")
+
+    frame = pd.read_csv(input_path)
+    split_counts: dict[str, int] = {}
+    task_counts: dict[str, int] = {}
+    if "split" in frame.columns:
+        split_counts = {
+            str(split_name): int(count)
+            for split_name, count in frame["split"].value_counts(dropna=False).items()
+        }
+    if "task_name" in frame.columns:
+        task_counts = {
+            str(task_name): int(count)
+            for task_name, count in frame["task_name"].value_counts(dropna=False).items()
+        }
+
+    required_benchmark_splits = {"train", "val", "test"}
+    present_splits = set(split_counts)
+    contains_full_train_val_test = required_benchmark_splits.issubset(present_splits)
+    intended_use = (
+        "complete_train_val_test_source"
+        if contains_full_train_val_test
+        else "audited_replay_review_source_only"
+    )
+    return {
+        "path": str(input_path),
+        "row_count": int(len(frame)),
+        "columns": list(frame.columns),
+        "split_counts": split_counts,
+        "task_counts": task_counts,
+        "contains_full_train_val_test": contains_full_train_val_test,
+        "intended_use": intended_use,
+    }
 
 
 def write_json(output_path: Path, payload: dict[str, Any]) -> None:
@@ -129,6 +200,7 @@ def build_config_payload(
     run_paths,
     replay_enabled: bool,
     predicted_utility_artifact_paths: tuple[Path, Path] | None = None,
+    audited_review_metadata: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Build a JSON-serializable snapshot of the run configuration."""
     predicted_model_path = None
@@ -146,6 +218,18 @@ def build_config_payload(
         "replay_enabled": replay_enabled,
         "replay_mode": config.replay.replay_mode,
         "task_order": list(config.data.task_order),
+        "data_dir": str(config.data.data_dir),
+        "data_source": config.data.data_source,
+        "use_audited_review": config.data.use_audited_review,
+        "audited_review_csv": (
+            str(config.data.audited_review_csv)
+            if config.data.use_audited_review and config.data.audited_review_csv is not None
+            else None
+        ),
+        "train_source": config.data.train_eval_source_note,
+        "eval_source": config.data.train_eval_source_note,
+        "audited_review_source": config.data.audited_review_source_note,
+        "audited_review_metadata": audited_review_metadata,
         "model_name": config.model.model_name,
         "seed": config.training.seed,
         "train_sample_size": config.data.train_sample_size,
@@ -261,9 +345,25 @@ def build_random_score_rows(random_selection_rows: list[dict[str, Any]]) -> list
 
 
 def main() -> None:
-    """Run the continual fine-tuning experiment using local processed data only."""
+    """Run continual fine-tuning using processed data and optional audited review metadata."""
     args = parse_args()
     config = get_config()
+
+    if args.data_dir is not None:
+        config.data.data_dir = resolve_project_path(config, args.data_dir)
+
+    if args.audited_review_csv is not None:
+        config.data.audited_review_csv = resolve_project_path(config, args.audited_review_csv)
+
+    if args.use_audited_review:
+        config.data.use_audited_review = True
+        config.data.data_source = "processed_plus_audited_review"
+        config.data.audited_review_source_note = (
+            "The audited review CSV is attached for replay selection and utility review "
+            "provenance only. Train, validation, and test samples are still loaded from "
+            "processed JSONL files unless a future audited train/val/test data source is "
+            "provided explicitly."
+        )
 
     if args.seed is not None:
         config.training.seed = args.seed
@@ -335,6 +435,15 @@ def main() -> None:
         )
 
     ensure_local_processed_data(config)
+    audited_review_metadata = None
+    if config.data.use_audited_review:
+        audited_review_metadata = inspect_audited_review_csv(config.data.audited_review_csv)
+        if not audited_review_metadata["contains_full_train_val_test"]:
+            print(
+                "Warning: audited review CSV does not contain complete train/val/test "
+                "splits; keeping train/val/test loading on processed JSONL."
+            )
+
     set_global_seed(config.training.seed)
 
     run_paths = create_run_paths(config, args.run_name)
@@ -362,8 +471,13 @@ def main() -> None:
             run_paths=run_paths,
             replay_enabled=replay_enabled,
             predicted_utility_artifact_paths=predicted_utility_artifact_paths,
+            audited_review_metadata=audited_review_metadata,
         ),
     )
+
+    if args.dry_run_config:
+        print(f"Dry run complete. Wrote run_config.json to {run_paths.run_config_path}")
+        return
 
     model, tokenizer = load_model_and_tokenizer(config.model.model_name, config.training.device)
     replay_buffer = ReplayBuffer(max_size=config.replay.replay_buffer_size)
@@ -379,6 +493,10 @@ def main() -> None:
     print(f"Run name: {run_paths.run_name}")
     print(f"Device: {config.training.device}")
     print(f"Tasks: {config.data.task_order}")
+    print(f"Data dir: {config.data.data_dir}")
+    print(f"Data source: {config.data.data_source}")
+    if config.data.use_audited_review:
+        print(f"Audited review CSV: {config.data.audited_review_csv}")
     print(f"Replay mode: {config.replay.replay_mode}")
     print(f"Replay selection strategy: {config.replay.replay_selection_strategy}")
     if predicted_utility_artifact_paths is not None:

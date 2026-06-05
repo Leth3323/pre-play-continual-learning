@@ -3,6 +3,12 @@
 ## Overview
 This index tracks the experiment-level directory structure under `outputs/experiments/`, where each experiment id contains its nested run folders and one enriched `<exp_id>_summary.md` report.
 
+## Data Source Note
+
+- Experiments `exp001` through `exp010` are preliminary experiments using `data/processed/<task>/{train,val,test}.jsonl` as the train/validation/test source.
+- The current final audited review file is `outputs/final_review/final_reviewed_dataset.csv`. It contains reviewed train-split replay/utility metadata and should be treated as an audited replay review source, not a complete train/validation/test benchmark source.
+- Future final/main experiments should record `data_source`, `data_dir`, `use_audited_review`, and `audited_review_csv` in each `run_config.json`.
+
 ## Directory Structure
 ```text
 outputs/

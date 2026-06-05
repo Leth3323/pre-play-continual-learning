@@ -7,6 +7,7 @@ This project is a small continual fine-tuning prototype inspired by PRE-PLAY sty
 - `data/raw/`: raw Hugging Face datasets saved locally with `save_to_disk`
 - `data/processed/`: processed local JSONL files used by training and evaluation
 - `data/audit/`: human-readable audit CSV files
+- `outputs/final_review/final_reviewed_dataset.csv`: final audited replay review CSV used as optional review provenance, not as the default train/val/test benchmark source
 - `outputs/experiments/<exp_id>/<run_name>/`: unified output folder for each future experiment
 - `outputs/experiment_index.md`: index of legacy runs and the current output standard
 
@@ -60,7 +61,7 @@ python data_download.py
 python preprocess.py
 ```
 
-3. Run continual training using only local processed JSONL files:
+3. Run continual training using local processed JSONL files:
 
 ```bash
 python main.py
@@ -72,6 +73,20 @@ Recommended formal experiment names start with `expXXX_`, for example:
 python main.py --run-name exp003_replay_3tasks --tasks sciq arc_challenge boolq
 python main.py --run-name exp003_no_replay_3tasks --tasks sciq arc_challenge boolq --no-replay
 ```
+
+By default, experiments read train/validation/test samples from `data/processed/<task>/{train,val,test}.jsonl`.
+To attach the final audited replay review CSV to a run without replacing the train/validation/test files, use:
+
+```bash
+python main.py \
+  --run-name exp011_scored_replay_3tasks \
+  --tasks sciq arc_challenge boolq \
+  --data-dir data/processed \
+  --use-audited-review \
+  --audited-review-csv outputs/final_review/final_reviewed_dataset.csv
+```
+
+The current `final_reviewed_dataset.csv` contains reviewed train-split replay/utility metadata only. It should be recorded as an audited replay review source unless a future audited train/validation/test dataset is created explicitly.
 
 You can also run a subset of tasks:
 
@@ -96,7 +111,10 @@ A typical comparison is:
 
 - `main.py` does not download datasets automatically.
 - `data_download.py` is the only file that downloads from Hugging Face.
-- Training reads only from local files under `data/processed/`.
+- Training reads local processed JSONL by default. `--data-dir` can point to another processed-style directory with `<task>/{train,val,test}.jsonl`.
+- `--use-audited-review` records `outputs/final_review/final_reviewed_dataset.csv` in `run_config.json` as audited replay review provenance. It does not replace validation or test data when the CSV does not contain complete train/val/test splits.
+- Experiments `exp001` through `exp010` are preliminary experiments using `data/processed` JSONL as the train/validation/test data source.
+- Later final/main experiments should explicitly record the audited review CSV when replay selection or utility review conclusions depend on it.
 - Processed splits are written as `train.jsonl`, `val.jsonl`, and `test.jsonl`.
 - Replay selection uses per-sample loss as a simple surprise score.
 - Legacy runs under `outputs/checkpoints/`, `outputs/logs/`, `outputs/metrics/`, and `outputs/replay_scores/` are preserved and are not moved automatically.

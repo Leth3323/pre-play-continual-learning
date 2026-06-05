@@ -56,10 +56,20 @@ class TrainingConfig:
 
 @dataclass
 class DataConfig:
-    """Dataset order and processed subset sizes."""
+    """Dataset order, source metadata, and processed subset sizes."""
 
     task_order: list[str] = field(
         default_factory=lambda: ["sciq", "arc_challenge", "boolq", "gsm8k"]
+    )
+    data_dir: Path | None = None
+    data_source: str = "processed"
+    use_audited_review: bool = False
+    audited_review_csv: Path | None = None
+    train_eval_source_note: str = (
+        "Train, validation, and test samples are loaded from processed JSONL files."
+    )
+    audited_review_source_note: str = (
+        "No audited review CSV is attached to this run."
     )
     train_sample_size: int = 100
     val_sample_size: int = 30
@@ -147,6 +157,10 @@ def create_directories(config: AppConfig) -> None:
 def get_config(project_root: Optional[Path] = None) -> AppConfig:
     """Create and return the application configuration."""
     config = AppConfig(paths=_build_path_config(project_root=project_root))
+    config.data.data_dir = config.paths.data_processed
+    config.data.audited_review_csv = (
+        config.paths.outputs_root / "final_review" / "final_reviewed_dataset.csv"
+    )
     create_directories(config)
     return config
 
@@ -158,7 +172,8 @@ def get_raw_dataset_dir(config: AppConfig, task_name: str) -> Path:
 
 def get_processed_task_dir(config: AppConfig, task_name: str) -> Path:
     """Return the local processed dataset directory for a task."""
-    return config.paths.data_processed / task_name
+    data_dir = config.data.data_dir or config.paths.data_processed
+    return data_dir / task_name
 
 
 def extract_experiment_id(run_name: str) -> str:
